@@ -15,13 +15,13 @@ ServoControl::ServoControl(uint8_t pin) : curPosition(BEGIN_POS), initialised(tr
   servo.attach(pin);
 }
 
-bool ServoControl::setTarget(unsigned long pwm, unsigned long ms)
+bool ServoControl::setTarget(uint16_t pwm, uint16_t ms)
 {
   if (!initialised || pwm < MIN_PWM || pwm > MAX_PWM) {
     return false;
   }
 
-  long sS = (abs((int)pwm - (int)curPosition) / (ms / STEP_TIME));
+  int sS = (abs((int)pwm - (int)curPosition) / (ms / STEP_TIME));
   if (sS == 0)
   {
     return false;
@@ -49,4 +49,9 @@ void ServoControl::updatePos()
     }
     servo.writeMicroseconds(curPosition);
   }
+}
+
+uint16_t ServoControl::getCurPosition()const
+{
+  return curPosition;
 }

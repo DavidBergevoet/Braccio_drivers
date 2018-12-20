@@ -39,8 +39,15 @@ bool BraccioArm::setTarget(braccio::Servos servo, uint16_t pwm, uint16_t ms)
   debug(F(" To: "));
   debug(pwm);
   debug(F(" In: "));
-  debug(ms);
+  debugln(ms);
   return servos[servo].setTarget(pwm, ms);
+}
+
+void BraccioArm::stopServo(braccio::Servos servo)
+{
+  setTarget(servo,servos[servo].getCurPosition(),0);
+  debug(F("Stopping servo: "));
+  debugln(servo);
 }
 
 void BraccioArm::update()

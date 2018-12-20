@@ -11,16 +11,18 @@ class ServoControl
   public:
     ServoControl();
     ServoControl(uint8_t pin);
-    bool setTarget(unsigned long pwm, unsigned long ms);
+    bool setTarget(uint16_t pwm, uint16_t ms);
     void updatePos();
 
-    unsigned long curPosition;
+    uint16_t getCurPosition()const;
+    
 
   private:
+  uint16_t curPosition;
     bool initialised;
     Servo servo;
-    unsigned long stepSize /*ms*/;
-    unsigned long target;
-    unsigned long previousUpdate;
+    uint16_t stepSize /*ms*/;
+    uint16_t  target;
+    uint16_t previousUpdate;
 };
 #endif  // SERVOCONTROL_HPP_

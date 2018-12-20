@@ -24,6 +24,7 @@ class BraccioArm {
 
     void init();
     bool setTarget(braccio::Servos servo, uint16_t pwm, uint16_t ms);
+    void stopServo(braccio::Servos servo);
     void update();
 
   private:

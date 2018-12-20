@@ -1,5 +1,3 @@
-//#define DEBUG_MODE
-
 #include "BraccioArm.hpp"
 #include "Parser.hpp"
 
@@ -10,7 +8,7 @@ BraccioArm arm;
 #define SERVONR 0
 #define PWMNR 1
 #define MSNR 2
-unsigned long arr[COMMAND_LENGTH];
+uint16_t arr[COMMAND_LENGTH];
 Parser p;
 
 void setup() {
@@ -38,6 +36,10 @@ void loop()
     else if (p.singleCommand(command + END, arr))
     {
       arm.setTarget(braccio::Servos(arr[SERVONR]), arr[PWMNR], arr[MSNR]);
+    }
+    else if(p.stopCommand(command,arr[0]))
+    {
+      arm.stopServo(braccio::Servos(arr[0]));
     }
   }
   arm.update();

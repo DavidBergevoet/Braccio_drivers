@@ -1,6 +1,8 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
+//#define DEBUG_MODE
+
 #include <Arduino.h>
 
 #ifdef DEBUG_MODE

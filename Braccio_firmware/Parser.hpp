@@ -19,7 +19,8 @@ class Parser
     Parser() = default;
     virtual ~Parser() = default;
 
-    bool singleCommand(const String& cmd, unsigned long ret[COMMAND_LENGTH]);
+    bool singleCommand(const String& cmd, uint16_t ret[COMMAND_LENGTH])const;
+    bool stopCommand(const String& cmd,uint16_t& ret)const;
     void printHelp()const;
     void printConnect()const;
   private:

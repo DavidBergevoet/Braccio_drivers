@@ -1,6 +1,8 @@
 #include "Parser.hpp"
 
-bool Parser::singleCommand(const String& cmd, unsigned long ret[COMMAND_LENGTH])
+#define STOP_COMMAND "STOP"
+
+bool Parser::singleCommand(const String& cmd, uint16_t ret[COMMAND_LENGTH])const
 {
   for (size_t i = 0; i < cmd.length(); ++i)
   {
@@ -64,10 +66,30 @@ bool Parser::singleCommand(const String& cmd, unsigned long ret[COMMAND_LENGTH])
   return true;
 }
 
+bool Parser::stopCommand(const String& cmd, uint16_t& ret)const
+{
+  String stopCmd = STOP_COMMAND;
+  for (size_t i = 0; i < stopCmd.length(); ++i)
+  {
+    if (stopCmd[i] != cmd[i])
+    {
+      return false;
+    }
+  }
+  String servoNr = cmd.substring(stopCmd.length(), cmd.length());
+  if(!is_number(servoNr)){
+    return false;
+  }
+  ret = servoNr.toInt();
+  return true;
+}
+
 bool Parser::is_number(const String& s)const
 {
-  for (char c : s) {
-    if (!isdigit(c)) {
+  for (char c : s)
+  {
+    if (!isdigit(c))
+    {
       return false;
     }
   }
@@ -80,7 +102,9 @@ void Parser::printHelp()const
                "   " + String(NR) +  ": The number of the servo\n"
                "   " + String(PWM) +  ": The pwm signal of the servo\n"
                "   " + String(TIME) + ": The duration of the movement in ms\n"
-               "   /r: The end character of the command\n");
+               "   /r: The end character of the command\n"
+               "   \n"
+               "   "+String(STOP_COMMAND)+"<nr>: To stop a certain servo immediately\n");
 }
 
 void Parser::printConnect()const
