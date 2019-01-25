@@ -1,0 +1,21 @@
+# The usb port which the robot is connected to
+USBPORT /dev/ttyACM0
+
+# The baudrate of the serial connection
+BAUDRATE 9600
+
+# Position _ Base _ Shoulder _  Elbow _ Wrist _ WristRotate
+
+park -10 -50 90 90 90 
+
+straight 0 0 0 0 0 90
+
+ready -90 -10 90 0 90 0
+
+# Servo _ minDegree _ maxDegree _ minPWM _ maxPWM
+Base -90 90 550 2400
+Shoulder -60 40 2300 1000
+Elbow -70 90 2400 600
+Wrist -90 90 2400 550
+Wrist_rotate -90 90 2400 550
+Gripper 0 90 900 1550

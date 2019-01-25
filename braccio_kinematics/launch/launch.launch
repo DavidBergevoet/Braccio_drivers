@@ -1,0 +1,14 @@
+<launch>
+
+    <node   name="braccio_kinematics" 
+            pkg="braccio_kinematics" 
+            type="braccio_kinematics" 
+            output="screen"
+            required="true">
+    
+        <param name="l1" value="12.5" type="double" />
+        <param name="l2" value="12.5" type="double" />
+        <param name="l3" value="18" type="double" />
+    </node>
+
+</launch>

@@ -1,0 +1,2 @@
+string position
+float32 duration

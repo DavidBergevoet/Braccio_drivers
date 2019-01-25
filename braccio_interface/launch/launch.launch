@@ -1,0 +1,5 @@
+<launch>
+	<arg name="config_path" default="$(find braccio_interface)/config.txt" />
+	<node name="braccio_interface" pkg="braccio_interface" type="braccio_interface" args="$(arg config_path)" output="screen" required="true" />
+	
+</launch>

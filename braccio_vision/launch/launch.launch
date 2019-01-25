@@ -1,0 +1,5 @@
+<launch>
+	<arg name="templates_path" default="$(find braccio_vision)/templates/" />
+	<arg name="nr_of_templates" default="3" />
+	<node name="braccio_vision" pkg="braccio_vision" type="braccio_vision" args="$(arg templates_path) $(arg nr_of_templates)" output="screen" required="true" />
+</launch>

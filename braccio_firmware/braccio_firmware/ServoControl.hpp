@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#define STEP_TIME 10  // ms
+#define STEP_TIME 5  // ms
 
 class ServoControl
 {
