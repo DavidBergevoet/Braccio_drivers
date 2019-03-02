@@ -33,3 +33,5 @@
 
 # Project files
 .project
+.idea/
+*/doxygen/*

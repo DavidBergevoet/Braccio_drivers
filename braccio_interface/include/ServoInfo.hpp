@@ -5,6 +5,11 @@
 #include <map>
 
 #define NR_OF_SERVOS 6
+
+/**
+ * @enum SERVO_TYPE
+ * @brief A enumeration to keep track of all the DOF's of the arm
+ */
 enum SERVO_TYPE
 {
   BASE = 0,
@@ -23,12 +28,16 @@ const static std::map<SERVO_TYPE, std::string> SERVO_TYPE_TO_STRING =
     boost::assign::map_list_of(SERVO_TYPE::BASE, "Base")(SERVO_TYPE::SHOULDER, "Shoulder")(SERVO_TYPE::ELBOW, "Elbow")(
         SERVO_TYPE::WRIST, "Wrist")(SERVO_TYPE::GRIPPER, "Gripper")(SERVO_TYPE::WRISTROTATE, "Wrist_rotate");
 
+/**
+ * @struct ServoInfo
+ * @brief The enumeration to keep track of all the servo info
+ */
 struct ServoInfo
 {
-  SERVO_TYPE servoType;
-  int16_t minDegree;
-  int16_t maxDegree;
-  uint16_t minPwm;
-  uint16_t maxPwm;
+  SERVO_TYPE servoType; /*!< The servo type of the servo */
+  int16_t minDegree;    /*!< The minimum degree the servo can turn */
+  int16_t maxDegree;    /*!< The maximum degree the servo can turn */
+  uint16_t minPwm;      /*!< The minimum pwm signal of the servo in the minimum degree */
+  uint16_t maxPwm;      /*!< The maximum pwm signal of the servo in the maximum degree */
 };
 #endif
